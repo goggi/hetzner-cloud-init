@@ -58,6 +58,6 @@ if [ "$FLOATING_IPS" == "1" ]; then
   FLOATING_IPS=( $(curl -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" 'https://api.hetzner.cloud/v1/floating_ips' | jq -r '.floating_ips[].ip') )    
 
   for IP in "${FLOATING_IPS[@]}"; do
-    ip addr add $IP/32 dev eth0
+    ip addr add $IP/32 dev enp5s0
   done  
 fi
